@@ -8,7 +8,7 @@ var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-	db.Burgers.findAll({})
+	db.SeqBurgers.findAll({})
 		.then(function (result) {
 			// res.json(result);
 			var hbsObject = {
@@ -22,7 +22,7 @@ router.get("/", function (req, res) {
 
 router.post("/api/burgers", function (req, res) {
 	console.log(req.body);
-	db.Burgers.create({
+	db.SeqBurgers.create({
 		burger_name: req.body.burger_name,
 		devoured: req.body.devoured
 	})
@@ -32,7 +32,7 @@ router.post("/api/burgers", function (req, res) {
 });
 
 router.put("/api/burgers/:id", function (req, res) {
-	db.Burgers.update(
+	db.SeqBurgers.update(
 		{devoured : req.body.devoured},
 		{where: {id: req.params.id}
 		})
